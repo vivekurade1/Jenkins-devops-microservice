@@ -2,10 +2,10 @@ pipeline {
 	agent any
 	//agent { docker { image 'maven:3.9.6'} }
 	parameters {
-		booleanParam(name: 'Build', defaultValue: true, discription:'Runs build stage')
-		booleanParam(name: 'Compile', defaultValue: false, discription:'Runs Compile stage')
-		booleanParam(name: 'Test', defaultValue: false, discription:'Runs test stage')
-		booleanParam(name: 'Integration Test', defaultValue: false, discription:'Runs Integration Stage')
+		booleanParam(name: 'Build', defaultValue: true, description:'Runs build stage')
+		booleanParam(name: 'Compile', defaultValue: false, description:'Runs Compile stage')
+		booleanParam(name: 'Test', defaultValue: false, description:'Runs test stage')
+		booleanParam(name: 'Integration Test', defaultValue: false, description:'Runs Integration Stage')
 	}
 	environment {
 		dockerHome =  tool 'myDocker'
