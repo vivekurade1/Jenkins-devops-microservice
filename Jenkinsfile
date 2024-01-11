@@ -1,9 +1,9 @@
 pipeline {
-	parameter{
-		checkbox(name: 'Stage', defaultValue: 'Build','Compile','Test','Integration Test', discription:'Choose which stages to run')
-	}
 	agent any
 	//agent { docker { image 'maven:3.9.6'} }
+	parameters {
+		checkbox(name: 'Stage', defaultValue: 'Build','Compile','Test','Integration Test', discription:'Choose which stages to run')
+	}
 	environment {
 		dockerHome =  tool 'myDocker'
 		mavenHome = tool 'myMaven'
