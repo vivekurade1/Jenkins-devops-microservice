@@ -39,6 +39,7 @@ pipeline {
 			}
 		}*/
 
+
 		stage('CreatePackage') {
 			steps{
 				sh 'mvn package -DskipTest'
