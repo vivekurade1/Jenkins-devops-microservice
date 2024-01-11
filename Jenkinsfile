@@ -4,8 +4,8 @@ pipeline {
 	parameters {
 		booleanParam(name: 'Build', defaultValue: true, discription:'Runs build stage')
 		booleanParam(name: 'Compile', defaultValue: false, discription:'Runs Compile stage')
-		booleanParam(name: 'Test', defaultValue: ,false, discription:'Runs test stage')
-		booleanParam(name: 'Integration Test', defaultValue: false discription:'Runs Integration Stage')
+		booleanParam(name: 'Test', defaultValue: false, discription:'Runs test stage')
+		booleanParam(name: 'Integration Test', defaultValue: false, discription:'Runs Integration Stage')
 	}
 	environment {
 		dockerHome =  tool 'myDocker'
