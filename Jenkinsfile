@@ -1,4 +1,7 @@
 pipeline {
+	parameter{
+		checkbox(name: 'Stage', defaultValue: 'Build','Compile','Test','Integration Test', discription:'Choose which stages to run')
+	}
 	agent any
 	//agent { docker { image 'maven:3.9.6'} }
 	environment {
@@ -27,7 +30,7 @@ pipeline {
 				sh 'mvn test'
 			}
 		}
-		
+
 		stage('Integration Test') {
 			steps{
 				sh 'mvn failsafe:integration-test failsafe:verify'
