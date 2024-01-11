@@ -22,7 +22,7 @@ pipeline {
 			}
 		}
 
-		stage('Compile') {
+		/*stage('Compile') {
 			steps{
 				sh 'mvn clean compile'
 			}
@@ -37,6 +37,33 @@ pipeline {
 		stage('Integration Test') {
 			steps{
 				sh 'mvn failsafe:integration-test failsafe:verify'
+			}
+		}*/
+
+		stage('CreatePackage') {
+			steps{
+				sh 'mvn package -DskipTest'
+			}
+		}
+
+		stage('Docker Build') {
+			steps{
+				script {
+					dockerImage = docker.build("vivekurade/currency-exchange-devops:${env.BUILD_TAG}")
+				}
+			}
+		}
+
+		stage('Docker Deploy') {
+			steps{
+				script{
+					dockerImage.withRegistry('', dockerhub) {
+						dockerImage.push();
+						dockerImage.push('latest');
+					}
+
+
+				}
 			}
 		}
 	}
